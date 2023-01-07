@@ -1,5 +1,24 @@
-function Component(props) {
-    return <h1>Component Name</h1>
+import { redirect } from "react-router-dom"
+
+const URL = "https://people-api-j1x7.onrender.com"
+
+export const createAction = async ({ request }) => {
+  // get data from form
+  const formData = await request.formData()
+  // set up our new person to match schema
+  const newPerson = {
+    name: formData.get("name"),
+    image: formData.get("image"),
+    title: formData.get("title"),
   }
-  
-  export default Component
+  // Send new person to our API
+  await fetch(URL + "/people", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newPerson),
+  })
+  // redirect to index
+  return redirect("/")
+}
