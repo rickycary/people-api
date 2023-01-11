@@ -20,7 +20,9 @@ function Index(props) {
           <Link to={`/${person._id}`}>
             <h1>{person.name}</h1>
           </Link>
+          <Link to={`/${person._id}`}>
           <img src={person.image} alt={person.name} />
+          </Link>
           <h3>{person.title}</h3>
         </div>
       ))}
