@@ -5,7 +5,7 @@ function Index(props) {
 
   return (
     <div>
-      <h2>Create a Person</h2>
+      <h2>Add a Person</h2>
       <Form action="/create" method="post">
         <input type="input" name="name" placeholder="person's name" />
         <input type="input" name="image" placeholder="person's picture" />
@@ -14,6 +14,7 @@ function Index(props) {
       </Form>
 
       <h2>People</h2>
+      <div className="container">
       {people.map(person => (
         <div key={person._id} className="person">
           <Link to={`/${person._id}`}>
@@ -23,6 +24,7 @@ function Index(props) {
           <h3>{person.title}</h3>
         </div>
       ))}
+    </div>
     </div>
   )
 }
